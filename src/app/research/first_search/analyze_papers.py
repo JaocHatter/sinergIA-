@@ -2,8 +2,8 @@ from typing import Dict, Any
 from langchain_groq import ChatGroq
 from langchain.schema import SystemMessage, HumanMessage
 
-from src.research.settings import settings
-from src.research.states.state_sugerence import ResearchStage
+from app.research.settings import settings
+from app.research.states.state_sugerence import ResearchStage
 
 
 def analyze_step(state: Dict[str, Any]) -> Dict[str, Any]:

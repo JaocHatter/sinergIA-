@@ -2,7 +2,7 @@ from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate
 from typing import Dict
 
-from src.research.settings import settings
+from app.research.settings import settings
 
 def enhance_query(state: Dict) -> Dict:
     """Generate multiple enhanced search queries, prioritizing reference papers."""

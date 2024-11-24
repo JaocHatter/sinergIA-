@@ -6,8 +6,8 @@ import numpy as np
 from scipy.spatial.distance import cosine
 import logging
 
-from src.research.settings import settings
-from src.research.settings import client_openai
+from app.research.settings import settings
+from app.research.settings import client_openai
 
 # Use settings for logging configuration
 logging.basicConfig(level=settings.log_level)

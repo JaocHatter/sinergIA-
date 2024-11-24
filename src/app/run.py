@@ -2,20 +2,20 @@ from langgraph.graph import StateGraph, END
 from typing import Optional, Dict, List
 import logging
 
-from src.research.tools.arxiv_tool import ArxivSearcher
-from src.research.states.state_query import QueryState
-from src.research.states.state_sugerence import SugerenceState
-from src.research.states.state_graph import GraphState
-from src.research.states.state_constructor import StateConstructor
+from app.research.tools.arxiv_tool import ArxivSearcher
+from app.research.states.state_query import QueryState
+from app.research.states.state_sugerence import SugerenceState
+from app.research.states.state_graph import GraphState
+from app.research.states.state_constructor import StateConstructor
 
-from src.research.settings import settings
-from src.research.agents.translator import translator_step
-from src.research.first_search.analyze_papers import analyze_step
-from src.research.first_search.recommender import recommender_step
-from src.research.first_search.reference_extractor import extract_reference_papers
-from src.research.first_search.query_enhancer import enhance_query
+from app.research.settings import settings
+from app.research.agents.translator import translator_step
+from app.research.first_search.analyze_papers import analyze_step
+from app.research.first_search.recommender import recommender_step
+from app.research.first_search.reference_extractor import extract_reference_papers
+from app.research.first_search.query_enhancer import enhance_query
 
-from src.research.retriever.translator_query import ReActRetrieverSystem
+from app.research.retriever.translator_query import ReActRetrieverSystem
 
 
 MAX_LEN_CONTEXT_WINDOW = 10
@@ -65,7 +65,7 @@ def run_search(queries: List, max_results = 1, sort_by="Relevance"):
     # Remove duplicates based on entry_id
     unique_results = {
         paper['entry_id']: paper for paper in all_results
-    }.values()
+    }
     return unique_results
 
 
@@ -89,7 +89,9 @@ def run_sugerence(papers: Dict) -> Optional[Dict]:
         workflow = create_sugerence_workflow()
         initial_state = SugerenceState()
         initial_state["papers"] = papers
-        return workflow.invoke(initial_state) # Run the workflow
+        response = workflow.invoke(initial_state)
+        response.pop("papers")
+        return  response # Run the workflow
     except Exception as e:
         logger.error(f"x - Error during sugerence: {e}")
         return None

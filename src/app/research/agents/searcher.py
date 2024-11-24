@@ -4,11 +4,11 @@ from langchain_core.prompts import ChatPromptTemplate
 from typing import Dict,List
 import re
 
-from src.research.states.state_research import ResearchField
-from src.research.settings import settings
-from src.research.agents.search_tools.arxiv_search import ArxivSearcher
-from src.research.agents.search_tools.plos_search import PlosSearcher
-from src.research.agents.search_tools.pmc_search import PubMedSearcher
+from app.research.states.state_research import ResearchField
+from app.research.settings import settings
+from app.research.agents.search_tools.arxiv_search import ArxivSearcher
+from app.research.agents.search_tools.plos_search import PlosSearcher
+from app.research.agents.search_tools.pmc_search import PubMedSearcher
 
 llm_out = """
 specialized_db: arxiv

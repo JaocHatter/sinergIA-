@@ -1,7 +1,7 @@
 from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate
 from typing import Dict
-from src.research.settings import settings
+from app.research.settings import settings
 
 def extract_reference_papers(state: Dict)-> Dict:
     """Extract paper titles from the query."""
